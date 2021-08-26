@@ -1,0 +1,7 @@
+# vscode config file
+.vscode
+# build release directory
+BuildRelease/
+# tencent scf generated file
+Makefile
+serverless.yaml
