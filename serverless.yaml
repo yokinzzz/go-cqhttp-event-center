@@ -1,0 +1,34 @@
+component: scf
+name: go-cqhttp-event-center
+org: '1251920997'
+app: go-cqhttp-event-center
+stage: dev
+inputs:
+  name: go-cqhttp-event-center
+  src: ./BuildRelease
+  runtime: Go1
+  region: ap-shanghai
+  description: go-cqhttp-event-center
+  handler: main
+  memorySize: 64
+  timeout: 20
+  publicAccess: false # 是否开启公网访问
+  events:
+    - apigw:
+        serviceName: bot_serverless_api
+        serviceId: service-8zq7e2bl
+        name: bot_serverless_api
+        parameters:
+          protocols:
+            - https
+          netTypes:
+            - INNER
+          description: The service of bot event
+          environment: release
+          endpoints:
+            - path: /
+              method: POST
+              function:
+                isIntegratedResponse: true
+
+# For more information: https://github.com/serverless-components/tencent-scf/blob/master/docs/configure.md
