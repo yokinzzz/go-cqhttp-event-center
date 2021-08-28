@@ -14,14 +14,10 @@ jobs:
         node-version: [10.x]
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+    - name: serverless setup
+      run: curl -o- -L https://slss.io/install | bash
     - name: serverless deploy
-      uses: serverless/github-action@master
-      with:
-        args: deploy
+      run: sls deploy
       env:
         TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
         TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
