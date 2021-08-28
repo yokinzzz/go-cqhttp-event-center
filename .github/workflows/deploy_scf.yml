@@ -9,14 +9,15 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
+    
     steps:
     - uses: actions/checkout@v2
-    - name: serverless setup
-      run: curl -o- -L https://slss.io/install | bash
-    - name: serverless deploy
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Serverless Framework
+      run: npm install -g serverless
+    - name: deploy scf
       run: sls deploy
       env:
         TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
