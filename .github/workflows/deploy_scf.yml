@@ -17,8 +17,8 @@ jobs:
         node-version: '10.x'
     - name: Install Serverless Framework
       run: npm install -g serverless
+    - name: Serverless Tencent Authentication
+      run: serverless credentials set --secretId ${{ secrets.TENCENT_SECRET_ID }} --secretKey ${{ secrets.TENCENT_SECRET_KEY }}
     - name: deploy scf
       run: sls deploy
-      env:
-        TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
-        TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+      
