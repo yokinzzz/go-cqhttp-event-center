@@ -19,10 +19,11 @@ jobs:
       run: npm install -g serverless
     - name: install npm dependency
       run: npm install
-    - name: Serverless version
-      run: sls -v
-    - name: Serverless Tencent Authentication
-      run: serverless credentials set --secretId ${{ secrets.TENCENT_SECRET_ID }} --secretKey ${{ secrets.TENCENT_SECRET_KEY }}
-    - name: deploy scf
-      run: sls deploy
+    - uses: Teakowa/setup-serverless@v2.0.0
+      with:
+        provider: tencent
+      env:
+        TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+        TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
+    - run: sls deploy
       
