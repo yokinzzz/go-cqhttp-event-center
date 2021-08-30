@@ -11,14 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: Install Serverless Framework
-      run: npm install -g serverless
-    - name: install npm dependency
-      run: npm install
     - uses: Teakowa/setup-serverless@v2.0.0
       with:
         provider: tencent
