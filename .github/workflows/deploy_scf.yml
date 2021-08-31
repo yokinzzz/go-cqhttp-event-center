@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: deploy
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     
     steps:
     - uses: Teakowa/setup-serverless@v2.0.0
@@ -18,7 +18,5 @@ jobs:
         TENCENT_APPID: ${{ secrets.TENCENT_APP_ID }}
         TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
         TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
-    - run: ls
-    - run: sls credentials list
     - run: sls deploy
       
