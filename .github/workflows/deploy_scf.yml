@@ -18,5 +18,7 @@ jobs:
         TENCENT_APPID: ${{ secrets.TENCENT_APP_ID }}
         TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
         TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
+    - run: ls
+    - run: sls credentials list
     - run: sls deploy
       
